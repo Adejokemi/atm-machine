@@ -1,21 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Loop</title>
-    </head>
-        
+</head>
+<body>
     <script>
+        let exitLoop = false;
 
-        while (true) {
-            // Welcome user
-            alert(`Good Morning, and Welcome to Ajcity ATM
-            Enter to continue!`);
-        
-            // Enter pin
+        while (!exitLoop) {
+            alert(`Good Morning, and Welcome to Ajcity ATM\nEnter to continue!`);
             let pin = prompt("Enter your pin");
-        
-            // What do you want to do
+
             let action = +prompt(`What would you love to do today?
             Please enter just a number: 
             1. Transfer
@@ -24,57 +21,42 @@
             4. Enquiry
             5. Change Pin
             6. Exit`);
-        
+
             switch (action) {
-                case 1: // Transfer Option
-                    +prompt(`Select Bank
-                    1. Fcmb
-                    2. Opay
-                    3. Kuda
-                    4. Vin Bank
-                    5. Other Banks`);
-        
+                case 1:
+                    let bankOption = +prompt(`Select Bank\n1. Fcmb\n2. Opay\n3. Kuda\n4. Vin Bank\n5. Other Banks`);
                     let amount1 = +prompt(`Enter Amount:`);
-        
                     alert(`You have Successfully sent N${amount1}`);
                     break;
-        
-                case 2: // Balance Option
+
+                case 2:
                     alert(`Your account balance is #3,000,000.00`);
                     break;
-        
-                case 3: // Withdraw
+
+                case 3:
                     let amount2 = +prompt(`Enter Amount:`);
                     alert(`Please take your cash`);
                     break;
-        
-                case 4: // Enquiry
+
+                case 4:
                     let enquiry = prompt(`Enter your message:`);
-                    alert(`Your enquiry ...
-                    ${enquiry}
-                    This service is currently unavailable, Visit our nearest branch!`);
+                    alert(`Your enquiry ...\n${enquiry}\nThis service is currently unavailable, Visit our nearest branch!`);
                     break;
-        
-                case 5: // Change Pin
+
+                case 5:
                     alert(`This service is currently unavailable!!`);
                     break;
-        
-                case 6: // Exit
+
+                case 6:
                     alert(`Thank you for using Ajcity ATM. Have a nice day!`);
                     exitLoop = true;
                     break;
-        
+
                 default:
                     alert(`Select a valid option!`);
                     break;
             }
-        
-            if (exitLoop) {
-                break;
-            }
         }
-        
-        </script>
-        
+    </script>
 </body>
 </html>
