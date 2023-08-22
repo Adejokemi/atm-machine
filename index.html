@@ -7,12 +7,14 @@
 </head>
 <body>
     <script>
-        let exitLoop = false;
 
-        while (!exitLoop) {
-            alert(`Good Morning, and Welcome to Ajcity ATM\nEnter to continue!`);
+        alert(`Good Morning, and Welcome to Ajcity ATM\nEnter to continue!`);
             let pin = prompt("Enter your pin");
 
+        let exitLoop = false;
+        let accountBalance = 3000000; // Initial account balance
+
+        while (!exitLoop) {
             let action = +prompt(`What would you love to do today?
             Please enter just a number: 
             1. Transfer
@@ -26,16 +28,26 @@
                 case 1:
                     let bankOption = +prompt(`Select Bank\n1. Fcmb\n2. Opay\n3. Kuda\n4. Vin Bank\n5. Other Banks`);
                     let amount1 = +prompt(`Enter Amount:`);
-                    alert(`You have Successfully sent N${amount1}`);
+                    if (amount1 > accountBalance) {
+                        alert(`Insufficient funds`);
+                    } else {
+                        accountBalance -= amount1;
+                        alert(`You have Successfully sent N${amount1}`);
+                    }
                     break;
 
                 case 2:
-                    alert(`Your account balance is #3,000,000.00`);
+                    alert(`Your account balance is #${accountBalance.toFixed(2)}`);
                     break;
 
                 case 3:
                     let amount2 = +prompt(`Enter Amount:`);
-                    alert(`Please take your cash`);
+                    if (amount2 > accountBalance) {
+                        alert(`Insufficient funds`);
+                    } else {
+                        accountBalance -= amount2;
+                        alert(`Please take your cash`);
+                    }
                     break;
 
                 case 4:
@@ -60,3 +72,31 @@
     </script>
 </body>
 </html>
+
+    
+    
+    
+    
+    
+    
+    
+
+
+<!-- <script>
+    for (let i = 1; i <= 400; i++) {
+
+  if (i % 7 === 0 && i % 8 === 0) {
+    console.log("TIIDELABCohort5");
+
+  } else if (i % 7 === 0) {
+    console.log("TIIDELAB");
+
+  } else if (i % 8 === 0) {
+    console.log("Cohort5");
+
+} else {
+    console.log(i);
+}
+}
+</script> -->
+
