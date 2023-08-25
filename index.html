@@ -3,100 +3,218 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loop</title>
+    <title>ATM  Prompts </title>
+    <style>
+        body {
+            background: url(Bank.png) no-repeat center center/cover;
+            height: 90vh;
+        }
+
+
+        h1 {
+            text-align: center;
+            padding: 10px;
+            font-size: 2.5rem;
+            color: white;
+            background-color: rgba(94, 23, 94, 0.7);
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 8px;
+        }
+        
+        .btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        button {
+            width: 300px;
+            height: 100px;
+            background-color: rgba(94, 23, 94, 0.7);
+            padding: 20px;
+            cursor: pointer;
+            margin-top: 24rem;
+            color: white;
+            font-size: 2rem;
+            border: 0px;
+            border-radius: 10px;
+            
+        }
+        
+        button:hover {
+            background-color: rgba(94, 23, 94, 0.9);
+        }
+
+    </style>
 </head>
 <body>
-    <script>
 
-        alert(`Good Morning, and Welcome to Ajcity ATM\nEnter to continue!`);
-            let pin = prompt("Enter your pin");
+    
+        <h1>Welcome to Ajcity Online ATM</h1>
+        <div class="btn">
+            <button id="startBtn">Insert your Card</button>
+        </div>
 
-        let exitLoop = false;
-        let accountBalance = 3000000; // Initial account balance
 
-        while (!exitLoop) {
-            let action = +prompt(`What would you love to do today?
-            Please enter just a number: 
-            1. Transfer
-            2. Check Balance
-            3. Withdraw
-            4. Enquiry
-            5. Change Pin
-            6. Exit`);
 
-            switch (action) {
-                case 1:
-                    let bankOption = +prompt(`Select Bank\n1. Fcmb\n2. Opay\n3. Kuda\n4. Vin Bank\n5. Other Banks`);
-                    let amount1 = +prompt(`Enter Amount:`);
-                    if (amount1 > accountBalance) {
-                        alert(`Insufficient funds`);
-                    } else {
-                        accountBalance -= amount1;
-                        alert(`You have Successfully sent N${amount1}`);
-                    }
+
+
+
+
+     <script> 
+
+        // Getting user name
+        function enterValidName() {
+            let name;
+            do {
+                name = prompt(`Welcome Please enter your Registered Name`);
+                if (!name || !isNaN(name)) {
+                    alert(`Please enter a valid name`);
+                } else {
                     break;
+                }
+            } while (true);
+            return name;
+        }
 
-                case 2:
-                    alert(`Your account balance is #${accountBalance.toFixed(2)}`);
+        // PIN
+        function getPIN() {
+            let pin;
+            do {
+                pin = prompt(`Enter 4 digit PIN to Proceed`);
+                if (pin.length !== 4) {
+                    alert(`Invalid. Please enter a 4 digit pin`);
+                } else {
                     break;
+                }
+            } while (true);
+            return pin;
+        }
 
-                case 3:
-                    let amount2 = +prompt(`Enter Amount:`);
-                    if (amount2 > accountBalance) {
-                        alert(`Insufficient funds`);
-                    } else {
-                        accountBalance -= amount2;
-                        alert(`Please take your cash`);
-                    }
-                    break;
+        function Menu() {
+            return +prompt(`What would you like to do?
+            1. Withdrawal
+            2. Transfer
+            3. Check Balance
+            4. Change PIN 
+            5. Other Enquiry`);
+        }
 
-                case 4:
-                    let enquiry = prompt(`Enter your message:`);
-                    alert(`Your enquiry ...\n${enquiry}\nThis service is currently unavailable, Visit our nearest branch!`);
-                    break;
+        // Balance
+        let balance = 400_000.00;
+        function newBalance() {
+            let current = balance - amount;
+            alert(`Your new balance is ${current}!`);
+        }
 
-                case 5:
-                    alert(`This service is currently unavailable!!`);
-                    break;
-
-                case 6:
-                    alert(`Thank you for using Ajcity ATM. Have a nice day!`);
-                    exitLoop = true;
-                    break;
-
-                default:
-                    alert(`Select a valid option!`);
-                    break;
+        // Another transaction 
+        function anotherTransaction() {
+            let restart = +prompt(`Do you want to perform another transaction?
+                1. Yes
+                2. No`);
+            if (restart == 1) {
+                useATM();
+            } else {
+                alert(`Have a nice Day!`);
+                useATM();
             }
         }
-    </script>
-</body>
-</html>
 
-    
-    
-    
-    
-    
-    
-    
+        // Case 1
+        function case1() {
+            let amount = +prompt(`Enter Amount`);
+            if (amount > balance) {
+                alert(`Insufficient Funds!`)
+            } else {
+                alert(`Request Processing...`);
+                alert(`Withdrawal of ${amount} was Successful!!`)
+            }
+                
+        }
+
+        // Case 2
+        function case2() {
+            +prompt(`Select Bank below
+                        1. Diamond Bank
+                        2. Vast Bank
+                        3. Zenith
+                        4. KUDA
+                        5. OPAY
+                        6. Other Banks`);
+                
+            let account = +prompt(`Enter Account Number`);
+            alert(`Confirm account below:
+            ${account}`)
+
+            let transAmount = +prompt(`Enter Amount`);
+            if(transAmount > balance) {
+                alert(`Insufficient Funds`);
+            } else {
+                alert(`Transfer of ${transAmount} to ${account} was successful!`);
+            }
+        }
+
+        // Case 4
+        function forgotPin() {
+            let changePin = +prompt(`Enter old PIN`);
+                +prompt(`Enter new PIN`);
+                +prompt(`Confirm new PIN`);
+                 alert(`Your new pin is ${changePin}
+                 Don't not Diclose it to others!!`);
+        }
 
 
-<!-- <script>
-    for (let i = 1; i <= 400; i++) {
+        // Case 5
+        function otherEnquiry() {
+            alert(`Sorry, Service is currently unavailable 
+            visit our Nearest Branch for futher assistance`);
+        }
 
-  if (i % 7 === 0 && i % 8 === 0) {
-    console.log("TIIDELABCohort5");
+        // Performing Transaction
+        function performTransaction(option) {
+            switch (option) {
+                case 1: 
+                    case1();
+                    anotherTransaction();
+                    break;
+                case 2:
+                    case2();
+                    anotherTransaction();
+                    break;
+                case 3:
+                    alert(`Your balance is ${balance}`)
+                    anotherTransaction();
+                    break;
+                case 4:
+                    forgotPin();
+                    anotherTransaction();
+                    break;
+                case 5:
+                    otherEnquiry();
+                    anotherTransaction();
+                    break;
+                default:
+                    alert(`Please select a valid option!!`);
+                    useATM();
+            }
+        }
 
-  } else if (i % 7 === 0) {
-    console.log("TIIDELAB");
+        function useATM() {
+            const name = enterValidName();
+            alert(`Hello ${name}! Welcome to the Ajcity online ATM.`);
+            
+            const pin = getPIN();
+            const selectedOption = Menu();
+            performTransaction(selectedOption);
+            
+        }
 
-  } else if (i % 8 === 0) {
-    console.log("Cohort5");
 
-} else {
-    console.log(i);
-}
-}
-</script> -->
+        // link the function to the button's click event
+        document.getElementById('startBtn').addEventListener('click', useATM);
 
+
+     </script>
+ </body>
+ </html> 
