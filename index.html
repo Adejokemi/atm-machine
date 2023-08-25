@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preload" href="Bank.png" as="image">
-    <title>ATM  Prompts </title>
+    <title>ATM - Prompts </title>
     <style>
         body {
-            background: url('Bank.png') no-repeat center center/cover;
+            background: url(Bank.png) no-repeat center center/cover;
             height: 90vh;
         }
 
@@ -106,7 +105,7 @@
         let balance = 400_000.00;
         function newBalance() {
             let current = balance - amount;
-            alert(`Your new balance is ${current}!`);
+            alert(`Your new balance is ${current.toFixed(2)}!`);
         }
 
         // Another transaction 
@@ -129,7 +128,8 @@
                 alert(`Insufficient Funds!`)
             } else {
                 alert(`Request Processing...`);
-                alert(`Withdrawal of ${amount} was Successful!!`)
+                alert(`Withdrawal of ${amount} was Successful!!`);
+                newBalance(amount)
             }
                 
         }
